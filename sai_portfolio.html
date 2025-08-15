@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karanam Sai Sravanth - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 60px 0;
+            color: white;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            margin: 20px;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .name {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+
+        /* Navigation */
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 50px;
+            margin: 20px auto;
+            max-width: 600px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            padding: 15px 0;
+        }
+
+        .nav li {
+            margin: 0 20px;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav a:hover, .nav a.active {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        /* Sections */
+        .section {
+            background: white;
+            margin: 40px 0;
+            padding: 60px 40px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            transform: translateY(50px);
+            opacity: 0;
+            animation: slideInUp 0.8s ease-out forwards;
+        }
+
+        .section:nth-child(even) {
+            animation-delay: 0.2s;
+        }
+
+        .section:nth-child(odd) {
+            animation-delay: 0.4s;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            text-align: center;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+
+        /* Education */
+        .education-item {
+            background: linear-gradient(135deg, #f5f7ff, #e8f0ff);
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            border-left: 5px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .education-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+        }
+
+        /* Projects */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .project-card {
+            background: linear-gradient(135deg, #fff, #f8f9ff);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #e0e8ff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.2);
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .project-date {
+            color: #667eea;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .project-description {
+            line-height: 1.6;
+            color: #666;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .skill-category {
+            background: linear-gradient(135deg, #f8f9ff, #fff);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.15);
+        }
+
+        .skill-category h3 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .skill-tag.elementary {
+            background: linear-gradient(135deg, #ffa726, #ff7043);
+        }
+
+        /* Experience */
+        .experience-item {
+            background: linear-gradient(135deg, #fff5f5, #fff);
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            border-left: 5px solid #764ba2;
+            transition: all 0.3s ease;
+        }
+
+        .experience-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(118, 75, 162, 0.2);
+        }
+
+        .experience-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .experience-company {
+            color: #764ba2;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .experience-date {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Certifications & Hobbies */
+        .cert-hobby-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .cert-hobby-card {
+            background: linear-gradient(135deg, #f0f8ff, #fff);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .cert-hobby-title {
+            color: #667eea;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .cert-hobby-list {
+            list-style: none;
+        }
+
+        .cert-hobby-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #e0e8ff;
+            color: #666;
+        }
+
+        .cert-hobby-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* Languages */
+        .languages {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .language-item {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px 30px;
+            border-radius: 50px;
+            text-align: center;
+            min-width: 150px;
+            transition: all 0.3s ease;
+        }
+
+        .language-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .name {
+                font-size: 2.5rem;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .section {
+                padding: 40px 20px;
+                margin: 20px 0;
+            }
+            
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="name">KARANAM SAI SRAVANTH</h1>
+                <p class="title">B.E - Computer Science and Engineering</p>
+                <p class="title">Keshav Memorial Engineering College</p>
+                
+                <div class="contact-info">
+                    <a href="tel:+916309343159" class="contact-item">📞 +91-6309343159</a>
+                    <a href="mailto:saisravanth6309@gmail.com" class="contact-item">✉️ saisravanth6309@gmail.com</a>
+                    <a href="https://github.com/kss0704" target="_blank" class="contact-item">🔗 GitHub</a>
+                    <a href="https://linkedin.com/in/sai-sravanth-6aa53928b" target="_blank" class="contact-item">💼 LinkedIn</a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="nav">
+            <ul>
+                <li><a href="#education" onclick="scrollToSection('education')">Education</a></li>
+                <li><a href="#projects" onclick="scrollToSection('projects')">Projects</a></li>
+                <li><a href="#skills" onclick="scrollToSection('skills')">Skills</a></li>
+                <li><a href="#experience" onclick="scrollToSection('experience')">Experience</a></li>
+                <li><a href="#more" onclick="scrollToSection('more')">More</a></li>
+            </ul>
+        </nav>
+
+        <!-- Education -->
+        <section id="education" class="section">
+            <h2 class="section-title">Education</h2>
+            <div class="education-item">
+                <h3>B.E., Computer Science and Engineering</h3>
+                <p><strong>Keshav Memorial Engineering College</strong></p>
+                <p>CGPA: 7.8 | Year: 2021-2025</p>
+            </div>
+            <div class="education-item">
+                <h3>Senior Secondary</h3>
+                <p><strong>Telangana State Board of Intermediate Education</strong></p>
+                <p>Percentage: 83% | Year: 2021</p>
+            </div>
+            <div class="education-item">
+                <h3>Secondary</h3>
+                <p><strong>State Board of Secondary Education, TS</strong></p>
+                <p>CGPA: 8.5 | Year: 2019</p>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section id="projects" class="section">
+            <h2 class="section-title">Projects</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <h3 class="project-title">Gesture and Voice Based Virtual Interface Control</h3>
+                    <p class="project-date">Mar. 2025 - Apr. 2025</p>
+                    <p class="project-description">
+                        Developed a virtual interface control system that enables users to interact with digital environments using hand gestures and voice commands. Integrated computer vision (OpenCV) and speech recognition technologies using Python tools to create an intuitive, hands-free control mechanism aimed at enhancing accessibility and user experience.
+                    </p>
+                </div>
+                
+                <div class="project-card">
+                    <h3 class="project-title">Frontend Restaurant Website</h3>
+                    <p class="project-date">Mar. 2023 - Apr. 2023</p>
+                    <p class="project-description">
+                        Developed and designed a dynamic, user-friendly restaurant website with a focus on seamless user experience, responsive design, and modern UI components. Implemented features such as menu browsing, about section, and contact form using HTML and CSS. Ensured cross-browser compatibility and optimized performance for mobile and desktop platforms.
+                    </p>
+                </div>
+                
+                <div class="project-card">
+                    <h3 class="project-title">Sentimental Analysis of Movie Review System</h3>
+                    <p class="project-date">Oct. 2022 - Nov. 2022</p>
+                    <p class="project-description">
+                        Developed a sentiment analysis system to evaluate movie reviews, leveraging natural language processing (NLP) techniques. The system analyzes user-generated content to determine the overall sentiment (positive, negative, or neutral) of reviews, helping in understanding audience reactions. Utilized machine learning algorithms to classify sentiments, achieving high accuracy in predictions.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section id="skills" class="section">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag elementary">Python*</span>
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">C</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Web Development</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">HTML</span>
+                        <span class="skill-tag">CSS</span>
+                        <span class="skill-tag elementary">JavaScript*</span>
+                        <span class="skill-tag">MySQL</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Soft Skills</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Communication</span>
+                        <span class="skill-tag">Leadership</span>
+                        <span class="skill-tag">Adaptability</span>
+                        <span class="skill-tag">Teamwork</span>
+                    </div>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 20px; color: #666; font-style: italic;">
+                * Elementary proficiency
+            </p>
+        </section>
+
+        <!-- Experience -->
+        <section id="experience" class="section">
+            <h2 class="section-title">Experience</h2>
+            <div class="experience-item">
+                <h3 class="experience-title">AI Research Intern</h3>
+                <p class="experience-company">Coding Junior</p>
+                <p class="experience-date">May 2025 - Present</p>
+            </div>
+        </section>
+
+        <!-- Languages -->
+        <section class="section">
+            <h2 class="section-title">Languages</h2>
+            <div class="languages">
+                <div class="language-item">
+                    <strong>English</strong><br>
+                    <span>Fluent</span>
+                </div>
+                <div class="language-item">
+                    <strong>Telugu</strong><br>
+                    <span>Native</span>
+                </div>
+                <div class="language-item">
+                    <strong>Hindi</strong><br>
+                    <span>Intermediate</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- More Info -->
+        <section id="more" class="section">
+            <h2 class="section-title">Additional Information</h2>
+            <div class="cert-hobby-grid">
+                <div class="cert-hobby-card">
+                    <h3 class="cert-hobby-title">Certifications</h3>
+                    <ul class="cert-hobby-list">
+                        <li>Networking Certificate - BSNL</li>
+                    </ul>
+                </div>
+                
+                <div class="cert-hobby-card">
+                    <h3 class="cert-hobby-title">Hobbies</h3>
+                    <ul class="cert-hobby-list">
+                        <li>Drawing</li>
+                        <li>Exploring and learning new things</li>
+                        <li>Listening to music</li>
+                        <li>Sports</li>
+                    </ul>
+                </div>
+                
+                <div class="cert-hobby-card">
+                    <h3 class="cert-hobby-title">Extra-Curriculars</h3>
+                    <ul class="cert-hobby-list">
+                        <li>Accomplished event coordinator with a track record of delivering successful and memorable college events</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Smooth scrolling navigation
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+
+        // Add active class to navigation based on scroll position
+        window.addEventListener('scroll', function() {
+            const sections = ['education', 'projects', 'skills', 'experience', 'more'];
+            const navLinks = document.querySelectorAll('.nav a');
+            
+            let currentSection = '';
+            
+            sections.forEach(sectionId => {
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    const rect = section.getBoundingClientRect();
+                    if (rect.top <= 150 && rect.bottom >= 150) {
+                        currentSection = sectionId;
+                    }
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Add hover effects to project cards
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(-10px)';
+            });
+        });
+
+        // Add click ripple effect to buttons
+        document.querySelectorAll('.contact-item, .nav a').forEach(element => {
+            element.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.classList.add('ripple');
+                
+                this.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+    </script>
+
+    <style>
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(0);
+            animation: rippleEffect 0.6s linear;
+            pointer-events: none;
+        }
+
+        @keyframes rippleEffect {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+    </style>
+</body>
+</html>
