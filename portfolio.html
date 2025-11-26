@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sai Sravanth - Portfolio</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      color: #222;
+      transition: background 0.3s, color 0.3s;
+      line-height: 1.6;
+    }
+
+    /* NAVIGATION BAR */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #0d1117;
+      color: #fff;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    nav ul {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: opacity 0.3s;
+    }
+    nav a:hover { opacity: 0.6; }
+
+    #themeToggle {
+      background: white;
+      color: black;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      border: none;
+    }
+
+    /* HEADER */
+    header {
+      background: #0d1117;
+      color: #fff;
+      padding: 100px 20px 60px;
+      text-align: center;
+      animation: fadeIn 1.3s ease-in-out;
+    }
+
+    header h1 { font-size: 2.5rem; animation: slideDown 1.2s ease; }
+    header p { margin-top: 10px; font-size: 1.1rem; animation: fadeInUp 1.4s ease; }
+
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes slideDown { from { transform: translateY(-40px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    @keyframes fadeInUp { from { transform: translateY(40px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+    /* SECTIONS */
+    section {
+      padding: 60px 20px;
+      max-width: 1100px;
+      margin: auto;
+      animation: fadeIn 1s ease;
+    }
+
+    h2 {
+      margin-bottom: 15px;
+      border-left: 4px solid #0d1117;
+      padding-left: 10px;
+    }
+
+    .card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      margin-bottom: 15px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      animation: fadeInUp 0.8s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    /* FOOTER */
+    footer {
+      background: #0d1117;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+    /* DARK MODE */
+    body.dark { background: #0d1117; color: #e5e5e5; }
+    body.dark nav { background: #111827; }
+    body.dark .card { background: #1f2937; color: white; }
+    body.dark h2 { border-left-color: #38bdf8; }
+
+    /* RESPONSIVE */
+    @media (max-width: 750px) {
+      nav ul { display: none; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION BAR -->
+  <nav>
+    <div class="logo"><strong>Sai Sravanth</strong></div>
+    <ul>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+    </ul>
+    <button id="themeToggle">Dark Mode</button>
+  </nav>
+
+  <header>
+    <h1>Karanam Sai Sravanth</h1>
+    <p>AI/ML Enthusiast • Developer • Research Intern</p>
+  </header>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="card">
+      <p><strong>Phone:</strong> +91-6309343159</p>
+      <p><strong>Email:</strong> saisravanth6309@gmail.com</p>
+      <p><strong>GitHub:</strong> github.com/kss0704</p>
+      <p><strong>LinkedIn:</strong> linkedin.com/in/sai-sravanth</p>
+    </div>
+  </section>
+
+  <section id="education">
+    <h2>Education</h2>
+    <div class="card"><strong>B.E CSE</strong> – Keshav Memorial Engineering College — CGPA 7.8</div>
+    <div class="card"><strong>Intermediate</strong> – TSBIE — 83%</div>
+    <div class="card"><strong>SSC</strong> – TS Board — GPA 8.5</div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="card"><strong>Sentiment Analysis of Movie Reviews</strong><p>Built an ML model that classifies movie reviews into positive, negative, or neutral using NLP.</p></div>
+    <div class="card"><strong>Gesture & Voice Interface</strong><p>Created a hands-free control system using OpenCV and speech recognition for improved accessibility.</p></div>
+    <div class="card"><strong>LLM Chat Assistant (Groq)</strong><p>Developed a fast, context-aware AI assistant using Groq LPU acceleration for real-time responses.</p></div>
+    <div class="card"><strong>AI VS Code Extension</strong><p>Built an AI-powered coding assistant that provides smart suggestions and code understanding inside VS Code.</p></div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="card">
+      <p><strong>Programming:</strong> Java, Python, C</p>
+      <p><strong>Web Development:</strong> HTML, CSS, JavaScript, MySQL</p>
+      <p><strong>AI/ML:</strong> Artificial Intelligence, Machine Learning, NLP</p>
+      <p><strong>Operating Systems:</strong> Windows, Linux</p>
+      <p><strong>Tools/Frameworks:</strong> AWS (Elementary), FastAPI, OpenCV</p>
+      <p><strong>Soft Skills:</strong> Communication, Leadership, Adaptability, Teamwork</p>
+    </div>
+  </section>
+
+  <section id="languages">
+    <h2>Languages Known</h2>
+    <div class="card">
+      <p><strong>English:</strong> Fluent</p>
+      <p><strong>Telugu:</strong> Native</p>
+      <p><strong>Hindi:</strong> Intermediate</p>
+    </div>
+  </section>
+
+  <section id=\"certifications\">
+    <h2>Certifications</h2>
+    <div class=\"card\">Networking Certificate - BSNL</div>
+    <div class=\"card\">Introduction to Linux (LFS101) - The Linux Foundation</div>
+    <div class=\"card\">Oracle Cloud Infrastructure 2025 Certified Generative AI Professional</div>
+    <div class=\"card\">Oracle Database @ AWS Certified Architect Professional</div>
+  </section>
+
+  <section id=\"experience\"">
+    <h2>Experience</h2>
+    <div class="card"><strong>AI Research Intern – Coding Junior</strong> (2025 – Present)</div>
+  </section>
+
+  <section id="hobbies">
+    <h2>Hobbies</h2>
+    <div class="card">
+      <p>Drawing, Exploring and learning new things, Listening to music, Sports</p>
+    </div>
+  </section>
+
+  <section id="extracurriculars">
+    <h2>Extra-Curriculars</h2>
+    <div class="card">
+      <p>Accomplished event coordinator with a track record of managing and delivering successful college events.</p>
+    </div>
+  </section>
+
+<footer>© 2025 Sai Sravanth | Portfolio</footer>
+
+  <script>
+    const toggle = document.getElementById('themeToggle');
+    toggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      toggle.textContent = document.body.classList.contains('dark') ? 'Light Mode' : 'Dark Mode';
+    });
+  </script>
+
+</body>
+</html>
